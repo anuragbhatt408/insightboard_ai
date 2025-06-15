@@ -1,4 +1,4 @@
-import OpenAI from "openai";
+// import OpenAI from "openai";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import dotenv from "dotenv";
 dotenv.config();
@@ -49,26 +49,21 @@ const genAI = new GoogleGenerativeAI(apiKey);
 
 export const generateTasksFromTranscriptGemini = async (transcript: string) => {
 
-    const model = await genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
     const prompt = `Extract clear, actionable tasks from the following meeting transcript. 
 Return only a bullet point list:\n\n${transcript}`
 
     const result = await model.generateContent(prompt);
-    const response = await result.response;
+    const response = result.response;
 
-    console.log('response from gemini --> ', JSON.stringify(response));
     const text = response.text();
-    console.log('response.text() -> ', response.text())
-    console.log('text from response --> ', text);
 
     // Split into lines, clean up
     const tasksText = text
         .split("\n")
         .map((line) => line.replace(/^[-*•\d.]+\s*/, "").trim())
         .filter((line) => line.length > 0);
-
-    console.log('tasksText --> ', tasksText);
 
     const tasks = tasksText.map((text, index) => ({
         id: `${index + 1}`,             // Unique string ID

@@ -1,11 +1,8 @@
 // next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true,
-  },
-  // Not necessary but can help clarify to Vercel
-  // basePath: '', // Only if you've changed base path
+  // other config here
 };
+
 
 module.exports = nextConfig;

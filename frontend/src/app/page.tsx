@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import { mockSubmitTranscript } from "@/lib/api/transcript.api";
+import { submitTranscript } from "@/lib/api/transcript.api";
 import { Task } from "@/types/task";
 import TaskComp from "@/components/custom/Task";
 import ChartComp from "@/components/custom/ChartComp";
@@ -22,8 +22,8 @@ export default function HomePage() {
 
     try {
       setLoading(true);
-      // const response = await submitTranscript(transcript);
-      const response = await mockSubmitTranscript(transcript);
+      const response = await submitTranscript(transcript);
+      // const response = await mockSubmitTranscript(transcript);
 
       setTasks(response.tasks || []);
       toast.success("Tasks generated!");

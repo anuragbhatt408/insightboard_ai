@@ -7,7 +7,8 @@ import { toast } from "sonner";
 import { submitTranscript } from "@/lib/api/transcript.api";
 import { Task } from "@/types/task";
 import TaskComp from "@/components/custom/Task";
-import ChartComp from "@/components/custom/ChartComp";
+import PieChart from "@/components/custom/PieChart";
+import PriorityBarChart from "@/components/custom/PriorityBarChart";
 
 export default function HomePage() {
   const [transcript, setTranscript] = useState("");
@@ -62,7 +63,10 @@ export default function HomePage() {
       <div className="flex flex-col md:flex-row max-w-[90%] mx-auto">
         <TaskComp tasks={tasks} setTasks={setTasks} />
 
-        {tasks.length > 0 && <ChartComp tasks={tasks} />}
+        <div className="flex flex-col sm:px-6 w-full md:w-[40%] sticky top-4 h-96">
+          {tasks.length > 0 && <PieChart tasks={tasks} />}
+          {tasks.length > 0 && <PriorityBarChart tasks={tasks} />}
+        </div>
       </div>
     </div>
   );

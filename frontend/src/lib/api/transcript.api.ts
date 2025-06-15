@@ -20,16 +20,61 @@ export const mockSubmitTranscript = async (transcript: string): Promise<{ tasks:
                 id: "1",
                 text: "Summarize the meeting notes",
                 completed: false,
+                priority: ""
             },
             {
                 id: "2",
                 text: "Send follow-up email to all participants skngodfbnf vfondodf aofsdfiovbefsi fbvsdiufbvidf enfvuibfvefiu dfbnifubgefiug nerigeiugbe",
                 completed: false,
+                priority: ""
             },
             {
                 id: "3",
                 text: "Schedule next week's sync",
                 completed: false,
+                priority: ""
+            },
+            {
+                id: "4",
+                text: "Schedule next week's sync",
+                completed: false,
+                priority: ""
+            },
+            {
+                id: "5",
+                text: "Schedule next week's sync",
+                completed: false,
+                priority: ""
+            },
+            {
+                id: "6",
+                text: "Schedule next week's sync",
+                completed: false,
+                priority: ""
+            },
+            {
+                id: "7",
+                text: "Schedule next week's sync",
+                completed: false,
+                priority: ""
+            },
+            {
+                id: "8",
+                text: "Schedule next week's sync",
+                completed: false,
+                priority: ""
+            },
+            {
+                id: "9",
+                text: "Schedule next week's sync",
+                completed: false,
+                priority: ""
+            },
+            {
+                id: "10",
+                text: "Schedule next week's sync",
+                completed: false,
+                priority: ""
             },
         ],
     };

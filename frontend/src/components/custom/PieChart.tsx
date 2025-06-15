@@ -15,7 +15,7 @@ const ChartComp = ({ tasks }: { tasks: Task[] }) => {
   return (
     <>
       {/* Donut Pie Chart */}
-      <div className="sticky top-4 w-full px-4 sm:px-6 max-w-sm md:max-w-[40%] mx-auto mt-12 h-96">
+      <div className="sticky top-4 w-full px-4 mt-12">
         <h3 className="text-center text-base sm:text-md font-semibold mb-4">
           Task Completion Overview
         </h3>
@@ -30,7 +30,9 @@ const ChartComp = ({ tasks }: { tasks: Task[] }) => {
               innerRadius={50}
               outerRadius={70}
               label={({ name, percent }) =>
-                `${name}: ${(percent * 100).toFixed(0)}%`
+                percent * 100 >= 5
+                  ? `${name}: ${(percent * 100).toFixed(0)}%`
+                  : ""
               }
               labelLine={false}
             >

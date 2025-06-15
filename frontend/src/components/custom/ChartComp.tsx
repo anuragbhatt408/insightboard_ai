@@ -15,11 +15,11 @@ const ChartComp = ({ tasks }: { tasks: Task[] }) => {
   return (
     <>
       {/* Donut Pie Chart */}
-      <div className="w-full px-4 sm:px-6 max-w-sm md:max-w-[40%] mx-auto mt-12">
+      <div className="sticky top-4 w-full px-4 sm:px-6 max-w-sm md:max-w-[40%] mx-auto mt-12 h-96">
         <h3 className="text-center text-base sm:text-md font-semibold mb-4">
           Task Completion Overview
         </h3>
-        <ResponsiveContainer width="100%" height={280}>
+        <ResponsiveContainer minWidth="90%" width="100%" height={280}>
           <PieChart>
             <Pie
               data={chartData}
@@ -28,7 +28,7 @@ const ChartComp = ({ tasks }: { tasks: Task[] }) => {
               cx="50%"
               cy="50%"
               innerRadius={50}
-              outerRadius={80}
+              outerRadius={70}
               label={({ name, percent }) =>
                 `${name}: ${(percent * 100).toFixed(0)}%`
               }

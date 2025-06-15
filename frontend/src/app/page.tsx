@@ -37,7 +37,7 @@ export default function HomePage() {
 
   return (
     <div className="w-full p-6 space-y-6">
-      <div className="w-full max-w-md px-4 sm:px-6 mx-auto">
+      <div className="w-full max-w-[60%] px-4 sm:px-6 mx-auto">
         <h1 className="text-xl sm:text-2xl font-semibold mb-4 text-center sm:text-left">
           Submit Meeting Transcript
         </h1>

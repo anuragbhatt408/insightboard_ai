@@ -34,7 +34,7 @@ const TaskComp = ({
               {tasks.map((task) => (
                 <li
                   key={task.id}
-                  className={`flex flex-col sm:flex-row justify-between items-start sm:items-center p-3 rounded-md border ${
+                  className={`flex flex-col sm:flex-row w-[95%] justify-between items-start sm:items-center p-3 rounded-md border ${
                     task.completed ? "bg-green-100" : "bg-gray-50"
                   }`}
                 >

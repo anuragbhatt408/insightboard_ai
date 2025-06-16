@@ -10,6 +10,47 @@ InsightBoard AI is a full-stack application that transforms raw meeting transcri
 
 ---
 
+## ✅ Feature Completion Status
+
+### ✅ Level 1 — Core Features (Completed)
+A fully functional, hosted app with:
+
+1. **Transcript Submission**
+   - Multi-line text area for submitting meeting transcripts.
+
+2. **AI-Powered Action Item Generation**
+   - Calls LLM APIs (OpenAI or Gemini) to extract actionable tasks from transcripts.
+
+3. **Task Interaction**
+   - Display tasks in a list.
+   - Mark tasks as complete or delete them.
+   - UI and chart update in real-time based on task status.
+
+4. **Progress Visualization**
+   - Pie chart showing completed vs pending tasks.
+
+5. **Modern UI**
+   - Built with Shadcn UI + Tailwind for a polished, responsive experience.
+
+6. **Hosting**
+   - Deployed on Vercel (frontend) and Render (backend) with public access.
+
+7. **Documentation**
+   - Includes tech stack, LLM options, setup guide, and deployment links.
+
+---
+
+### 🔁 Level 2 — Additional Features (Completed)
+
+- **🔍 Filter and Sort Functionality**
+  - Filter tasks by priority or keyword.
+  - Sort tasks by priority level.
+
+- **📊 Bar Chart Visualization**
+  - Added a bar chart showing task distribution by priority level using Recharts.
+
+---
+
 ## 🛠️ Tech Stack
 
 ### Frontend

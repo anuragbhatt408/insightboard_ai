@@ -31,17 +31,17 @@ const PriorityBarChart = ({ tasks }: { tasks: Task[] }) => {
     {
       priority: "High",
       count: priorityCounts.High,
-      color: "oklch(97.1% 0.200 30.38)",
+      color: "#E53E3E", // Red 600
     },
     {
       priority: "Medium",
       count: priorityCounts.Medium,
-      color: "oklch(98.7% 0.100 102.212)",
+      color: "#D69E2E", // Yellow 600
     },
     {
       priority: "Low",
       count: priorityCounts.Low,
-      color: "oklch(97% 0.204 254.604)",
+      color: "#3182CE", // Blue 600
     },
   ];
 

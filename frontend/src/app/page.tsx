@@ -4,10 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import {
-  submitTranscript,
-  mockSubmitTranscript,
-} from "@/lib/api/transcript.api";
+import { mockSubmitTranscript } from "@/lib/api/transcript.api";
 import TaskComp from "@/components/custom/Task";
 import { useTaskContext } from "@/lib/context/taskContext";
 

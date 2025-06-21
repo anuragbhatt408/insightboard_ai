@@ -59,12 +59,14 @@ const TaskComp = ({
     if (sortBy === "Most") {
       filtered = filtered.sort(
         (taskA: Task, taskB: Task) =>
-          priorityOrder[taskA.priority] - priorityOrder[taskB.priority]
+          priorityOrder[taskA.priority as keyof typeof priorityOrder] -
+          priorityOrder[taskB.priority as keyof typeof priorityOrder]
       );
     } else if (sortBy === "Least") {
       filtered = filtered.sort(
-        (taskA, taskB) =>
-          priorityOrder[taskB.priority] - priorityOrder[taskA.priority]
+        (taskA: Task, taskB: Task) =>
+          priorityOrder[taskB.priority as keyof typeof priorityOrder] -
+          priorityOrder[taskA.priority as keyof typeof priorityOrder]
       );
     } else if (sortBy === "Incomplete") {
       filtered = filtered.sort(

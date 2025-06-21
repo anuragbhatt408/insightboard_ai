@@ -4,10 +4,19 @@ import { Button } from "../ui/button";
 import { useMemo, useState } from "react";
 import { Input } from "../ui/input";
 import { Priority } from "@/types/priority";
+import { PRIORITY, priorityOrder } from "@/lib/constants/priority";
+import { useRouter } from "next/navigation";
+import { FilterIcon } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
-const normalizePriority = (p: string): Priority => {
-  if (p === "High" || p === "Medium" || p === "Low") return p;
-  return "";
+const normalizePriority = (p: string): Priority | "" => {
+  return ["High", "Medium", "Low"].includes(p) ? (p as Priority) : "";
 };
 
 const TaskComp = ({
@@ -19,6 +28,9 @@ const TaskComp = ({
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [priorityFilter, setPriorityFilter] = useState<Priority | "All">("All");
+  const [sortBy, setSortBy] = useState("Default");
+  const [showSortDropDown, setShowSortDropDown] = useState<boolean>(false);
+  const router = useRouter();
 
   const toggleComplete = (id: string) => {
     setTasks((prev) =>
@@ -44,38 +56,102 @@ const TaskComp = ({
       );
     }
 
+    if (sortBy === "Most") {
+      filtered = filtered.sort(
+        (taskA: Task, taskB: Task) =>
+          priorityOrder[taskA.priority] - priorityOrder[taskB.priority]
+      );
+    } else if (sortBy === "Least") {
+      filtered = filtered.sort(
+        (taskA, taskB) =>
+          priorityOrder[taskB.priority] - priorityOrder[taskA.priority]
+      );
+    } else if (sortBy === "Incomplete") {
+      filtered = filtered.sort(
+        (taskA, taskB) => Number(taskA.completed) - Number(taskB.completed)
+      );
+    }
+
     return filtered;
-  }, [tasks, searchTerm, priorityFilter]);
+  }, [tasks, searchTerm, priorityFilter, sortBy]);
+
+  console.log("setShowSortDropDown", showSortDropDown);
+  console.log("sortBy", sortBy);
 
   return (
     <>
       {tasks.length > 0 && (
-        <div className="flex flex-col w-full px-4 sm:px-6 md:w-[50%] mx-auto mt-12 space-y-4">
-          <div className="flex flex-col sm:flex-row flex-wrap justify-between gap-4 items-center mr-10">
-            <Input
-              placeholder="Search tasks..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full sm:w-1/2"
-            />
+        <div className="flex flex-col w-full px-4 sm:px-6 mx-auto mt-12 space-y-4">
+          <div className="flex flex-col md:flex-row items-start md:justify-between gap-4 md:items-center mb-10">
+            <div className="flex w-full md:w-[50%]">
+              <Input
+                placeholder="Search tasks..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full sm:w-1/2"
+              />
+
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    size="icon"
+                    className="ml-4"
+                    onClick={() => setShowSortDropDown(!showSortDropDown)}
+                  >
+                    <FilterIcon />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-56">
+                  <DropdownMenuRadioGroup
+                    value={sortBy}
+                    onValueChange={setSortBy}
+                  >
+                    <DropdownMenuRadioItem value="Most">
+                      Most Important
+                    </DropdownMenuRadioItem>
+                    <DropdownMenuRadioItem value="Least">
+                      Least Important
+                    </DropdownMenuRadioItem>
+                    <DropdownMenuRadioItem value="Incomplete">
+                      Not Completed
+                    </DropdownMenuRadioItem>
+                  </DropdownMenuRadioGroup>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
 
             {/* Priority Filter Buttons */}
-            <div className="flex flex-wrap gap-2">
-              {["All", "High", "Medium", "Low"].map((level) => (
+            <div className="flex items-start flex-wrap gap-2 w-full md:w-[40%]">
+              {Object.values(PRIORITY).map((level: string) => (
                 <Button
                   key={level}
-                  variant={priorityFilter === level ? "default" : "outline"}
+                  variant={
+                    priorityFilter.toLocaleLowerCase() ===
+                    level.toLocaleLowerCase()
+                      ? "default"
+                      : "outline"
+                  }
                   onClick={() => setPriorityFilter(level as Priority | "All")}
                   size="sm"
                 >
                   {level}
                 </Button>
               ))}
+
+              {/* Dasboard Insight */}
+              <Button
+                variant={"secondary"}
+                size="sm"
+                className="cursor-pointer hover:bg-gray-600 hover:text-white"
+                onClick={() => router.push("/dashboard")}
+              >
+                Dashboard Insights
+              </Button>
             </div>
           </div>
 
           <div className="w-full">
-            <h2 className="text-lg mb-2 font-medium text-center sm:text-left">
+            <h2 className="text-lg font-medium text-center sm:text-left mb-5">
               Generated Tasks:
             </h2>
             <ul className="space-y-2">

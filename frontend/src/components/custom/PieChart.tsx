@@ -2,7 +2,7 @@ import { Task } from "@/types/task";
 import React from "react";
 import { Cell, Legend, Pie, PieChart, ResponsiveContainer } from "recharts";
 
-const ChartComp = ({ tasks }: { tasks: Task[] }) => {
+const PieChartComp = ({ tasks }: { tasks: Task[] }) => {
   const COLORS = ["#22c55e", "#ef4444"];
 
   const completed = tasks.filter((t) => t.completed).length;
@@ -15,8 +15,8 @@ const ChartComp = ({ tasks }: { tasks: Task[] }) => {
   return (
     <>
       {/* Donut Pie Chart */}
-      <div className="sticky top-4 w-full px-4 mt-12">
-        <h3 className="text-center text-base sm:text-md font-semibold mb-4">
+      <div className="w-[50%] px-4 mt-12 h-96">
+        <h3 className="text-center text-base text-md md:text-lg font-semibold mb-4">
           Task Completion Overview
         </h3>
         <ResponsiveContainer minWidth="90%" width="100%" height={280}>
@@ -54,4 +54,4 @@ const ChartComp = ({ tasks }: { tasks: Task[] }) => {
   );
 };
 
-export default ChartComp;
+export default PieChartComp;

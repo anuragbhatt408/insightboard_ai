@@ -46,7 +46,7 @@ const PriorityBarChart = ({ tasks }: { tasks: Task[] }) => {
   ];
 
   return (
-    <div className="w-full px-4 mt-12 h-96">
+    <div className="w-[50%] px-4 mt-12 h-96">
       <h3 className="text-lg font-semibold text-center mb-4">
         Tasks by Priority
       </h3>

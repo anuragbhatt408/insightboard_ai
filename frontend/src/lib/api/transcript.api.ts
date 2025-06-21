@@ -20,61 +20,61 @@ export const mockSubmitTranscript = async (transcript: string): Promise<{ tasks:
                 id: "1",
                 text: "Summarize the meeting notes",
                 completed: false,
-                priority: ""
+                priority: "High"
             },
             {
                 id: "2",
                 text: "Send follow-up email to all participants skngodfbnf vfondodf aofsdfiovbefsi fbvsdiufbvidf enfvuibfvefiu dfbnifubgefiug nerigeiugbe",
                 completed: false,
-                priority: ""
+                priority: "Low"
             },
             {
                 id: "3",
                 text: "Schedule next week's sync",
                 completed: false,
-                priority: ""
+                priority: "Medium"
             },
             {
                 id: "4",
                 text: "Schedule next week's sync",
                 completed: false,
-                priority: ""
+                priority: "Medium"
             },
             {
                 id: "5",
                 text: "Schedule next week's sync",
                 completed: false,
-                priority: ""
+                priority: "Medium"
             },
             {
                 id: "6",
                 text: "Schedule next week's sync",
                 completed: false,
-                priority: ""
+                priority: "Low"
             },
             {
                 id: "7",
                 text: "Schedule next week's sync",
                 completed: false,
-                priority: ""
+                priority: "High"
             },
             {
                 id: "8",
                 text: "Schedule next week's sync",
                 completed: false,
-                priority: ""
+                priority: "Medium"
             },
             {
                 id: "9",
                 text: "Schedule next week's sync",
                 completed: false,
-                priority: ""
+                priority: "Low"
             },
             {
                 id: "10",
                 text: "Schedule next week's sync",
                 completed: false,
-                priority: ""
+                priority: "High"
             },
         ],
     };
